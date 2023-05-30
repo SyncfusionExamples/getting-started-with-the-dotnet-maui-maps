@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MapsExample.MainPage"
+             xmlns:map="clr-namespace:Syncfusion.Maui.Maps;assembly=Syncfusion.Maui.Maps"
+             xmlns:local="clr-namespace:MapsExample">
+    <map:SfMaps>
+        <map:SfMaps.Layer >
+            <map:MapShapeLayer ShapesSource="https://cdn.syncfusion.com/maps/map-data/world-map.json"
+                           DataSource="{Binding Data}"        
+                           PrimaryValuePath="Country" 
+                            ShapeDataField="name" 
+                           ShapeColorValuePath="Density"
+                               ShowDataLabels="True"  >
+                <map:MapShapeLayer.ColorMappings>
+                    <map:RangeColorMapping Color="Turquoise" From="0" To="100" Text="0-100" />
+                    <map:RangeColorMapping Color="PaleTurquoise" From="100" To="200" Text="100-200"/>
+                    <map:RangeColorMapping Color="Aquamarine" From="200" To="300" Text="200-300" />
+                    <map:RangeColorMapping Color="Aqua" From="300" To="400" Text="300-400"/>
+                    <map:RangeColorMapping Color="MediumAquamarine" From="400" To="500" Text="400-500"/>
+                </map:MapShapeLayer.ColorMappings>
+                <map:MapShapeLayer.DataLabelSettings>
+                    <map:MapDataLabelSettings DataLabelPath="Country" 
+                                              OverflowMode="Trim"/>
+                </map:MapShapeLayer.DataLabelSettings>
+                <map:MapShapeLayer.Markers>
+                    <map:MapMarkerCollection>
+                        <map:MapMarker Latitude="20.593683"
+                                 
+                                   Longitude="78.962883" />
+                        <map:MapMarker Latitude="35.9078"
+                                       Longitude="127.7669"/>
+
+                    </map:MapMarkerCollection>
+                </map:MapShapeLayer.Markers>
+             </map:MapShapeLayer>
+        </map:SfMaps.Layer>
+    </map:SfMaps>
+    <ContentPage.BindingContext>
+        <local:ViewModel></local:ViewModel>
+    </ContentPage.BindingContext>
+</ContentPage>
